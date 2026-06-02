@@ -1,8 +1,7 @@
 import os
-
 import pytest
 
-
-@pytest.fixture
+@pytest.fixture(scope="session")
 def base_url():
-    return os.environ.get("BASE_URL", "http://192.168.31.117:5002")
+    url = os.environ.get("BASE_URL", "").strip()
+    return url if url else "http://192.168.31.117:5002"
